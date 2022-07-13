@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{DF010E91-EE4F-42FD-A864-37B6B0AE5EE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Market", "Market", "{1740D954-71CD-439B-A184-22FF407D2496}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Market.API", "Services\Market\Market.API\Market.API.csproj", "{49DE1645-D9C3-40D1-A4BA-ABCF0C6125E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateWay", "ApiGateWay", "{D1FACCE6-507C-4548-9E7B-166A95CEF4E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotApiGw", "ApiGateway\OcelotApiGw\OcelotApiGw.csproj", "{44C83DB6-5AE6-4E74-8290-F6800B061286}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49DE1645-D9C3-40D1-A4BA-ABCF0C6125E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49DE1645-D9C3-40D1-A4BA-ABCF0C6125E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49DE1645-D9C3-40D1-A4BA-ABCF0C6125E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49DE1645-D9C3-40D1-A4BA-ABCF0C6125E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44C83DB6-5AE6-4E74-8290-F6800B061286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44C83DB6-5AE6-4E74-8290-F6800B061286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44C83DB6-5AE6-4E74-8290-F6800B061286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44C83DB6-5AE6-4E74-8290-F6800B061286}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1740D954-71CD-439B-A184-22FF407D2496} = {DF010E91-EE4F-42FD-A864-37B6B0AE5EE2}
+		{49DE1645-D9C3-40D1-A4BA-ABCF0C6125E8} = {1740D954-71CD-439B-A184-22FF407D2496}
+		{44C83DB6-5AE6-4E74-8290-F6800B061286} = {D1FACCE6-507C-4548-9E7B-166A95CEF4E9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27BAF8A0-509E-42E4-9B52-933560FE183E}
+	EndGlobalSection
+EndGlobal
