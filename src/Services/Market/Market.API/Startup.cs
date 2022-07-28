@@ -27,11 +27,12 @@ namespace Market.API
         {
             services.AddScoped<IMarketContext, MarketContext>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
+            services.AddScoped<IStockRepository, StockRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalog.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Market.API", Version = "v1" });
             });
 
         }

@@ -11,10 +11,14 @@ namespace Market.API.Data
             var client = new MongoClient(configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
             var database = client.GetDatabase(configuration.GetValue<string>("DatabaseSettings:DatabaseName"));
 
-            Companies = database.GetCollection<Company>(configuration.GetValue<string>("DatabaseSettings:CollectionName"));
-            MarketContextSeed.SeedData(Companies);
+            Companies = database.GetCollection<Company>(configuration.GetValue<string>("DatabaseSettings:CompanyCollectionName"));
+            Stocks = database.GetCollection<Stock>(configuration.GetValue<string>("DatabaseSettings:StockCollectionName")); 
+        
+           // MarketContextSeed.SeedData(Companies, Stocks);
         }
 
         public IMongoCollection<Company> Companies { get; }
+
+        public IMongoCollection<Stock> Stocks { get; }
     }
 }

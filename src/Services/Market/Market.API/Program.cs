@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 //using Serilog;
 
-namespace Catalog.API
+namespace Market.API
 {
     public class Program
     {

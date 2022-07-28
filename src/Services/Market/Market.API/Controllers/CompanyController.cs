@@ -1,22 +1,17 @@
 ﻿using Market.API.Entities;
 using Market.API.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace Market.API.Controllers
 {
     [ApiController]
-    [Route("api/v1.0/Market/[controller]")]
-    public class CompanyController : ControllerBase
+    [Route("api/v1.0/market/[controller]")]
+    public class companyController : ControllerBase
     {
         private readonly ICompanyRepository _repository;
-        private readonly ILogger<CompanyController> _logger;
+        private readonly ILogger<companyController> _logger;
 
-        public CompanyController(ICompanyRepository repository, ILogger<CompanyController> logger)
+        public companyController(ICompanyRepository repository, ILogger<companyController> logger)
         {
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -26,16 +21,37 @@ namespace Market.API.Controllers
         [Route("getall")]
         public async Task<IActionResult> GetAll()
         {
-            try
+            var companies = await _repository.GetCompanies();
+            return Ok(companies);
+        }
+
+        [HttpGet]
+        [Route("info/{companycode}", Name = "GetCompanyInfo")]
+        public async Task<IActionResult> GetCompanyDetails(string companycode)
+        {
+            var company = await _repository.GetCompany(companycode);
+            if (company == null)
             {
-                var result = await _repository.GetCompanies();
-                return this.Ok(result);
+                _logger.LogError($"Company code: {companycode}, is not found.");
+                return NotFound();
             }
-            catch (Exception ex)
-            {
-                this._logger.LogError(ex, $"Error occured while fetching user");
-                throw;
-            }
+            return Ok(company);
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public async Task<IActionResult> Register(Company company)
+        {
+            await _repository.Register(company);
+            return CreatedAtRoute("GetCompanyInfo", new { companycode = company.Code }, company);
+        }
+
+        [HttpDelete]
+        [Route("delete/{companycode}")]
+
+        public async Task<IActionResult> DeleteCompanyByCode(string companycode)
+        {
+            return Ok(await _repository.DeleteCompany(companycode));
         }
 
     }

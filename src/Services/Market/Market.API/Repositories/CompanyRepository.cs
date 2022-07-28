@@ -25,5 +25,30 @@ namespace Market.API.Repositories
                             .ToListAsync();
         }
 
+        public async Task<Company> GetCompany(string companycode)
+        {
+            return await _context
+                           .Companies
+                           .Find(p => p.Code == companycode)
+                           .FirstOrDefaultAsync();
+        }
+
+        public async Task Register(Company company)
+        {
+            await _context.Companies.InsertOneAsync(company);
+        }
+
+        public async Task<bool> DeleteCompany(string companycode)
+        {
+            FilterDefinition<Company> filter = Builders<Company>.Filter.Eq(p => p.Code, companycode);
+
+            DeleteResult deleteResult = await _context
+                                                .Companies
+                                                .DeleteOneAsync(filter);
+
+            return deleteResult.IsAcknowledged
+                && deleteResult.DeletedCount > 0;
+        }
+
     }
 }

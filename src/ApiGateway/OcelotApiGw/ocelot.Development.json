@@ -2,6 +2,19 @@
   "Routes": [
     //Market API
     {
+      "DownstreamPathTemplate": "/api/v1.0/Market/Company/register",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5038"
+        }
+      ],
+      "UpstreamPathTemplate": "/Market/Company/register",
+      "UpstreamHttpMethod": [ "POST" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
       "DownstreamPathTemplate": "/api/v1.0/Market/Company/getall",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -11,7 +24,72 @@
         }
       ],
       "UpstreamPathTemplate": "/Market/Company/getall",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1.0/Market/Company/delete/{companycode}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5038"
+        }
+      ],
+      "UpstreamPathTemplate": "/Market/Company/delete/{companycode}",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1.0/Market/stock/getall",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5038"
+        }
+      ],
+      "UpstreamPathTemplate": "/Market/stock/getall",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1.0/Market/stock/delete/{companycode}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5038"
+        }
+      ],
+      "UpstreamPathTemplate": "/Market/stock/delete/{companycode}",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1.0/Market/stock/get/{companycode}/{startdate}/{enddate}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5038"
+        }
+      ],
+      "UpstreamPathTemplate": "/Market/Stock/getStockDetails/{companycode}/{startdate}/{enddate}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1.0/Market/stock/add/{companycode}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5038"
+        }
+      ],
+      "UpstreamPathTemplate": "/Market/Stock/add/{companycode}",
+      "UpstreamHttpMethod": [ "POST" ],
       "FileCacheOptions": { "TtlSeconds": 30 }
     }
   ],
